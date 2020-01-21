@@ -17,6 +17,7 @@ function OnSubmitButtonClick()
     //5. That's it.
     //The rest is just design
 
+    //Previous test output
     //document.getElementById("OutputText").textContent = "Submitted!";
 }
 
