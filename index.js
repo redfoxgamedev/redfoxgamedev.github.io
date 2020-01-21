@@ -1,7 +1,30 @@
 function OnSubmitButtonClick()
 {
-    GetAllNPCs();
+    let npcName = document.getElementById("npcName").value;
+    let npcIntro = document.getElementById("npcIntro").value;
 
+    if (npcName.length === 0 || npcIntro.length === 0)
+    {
+        SetStatusMessage("Make sure all fields are not empty");
+        return;
+    }
+
+    SetStatusMessage("Sending...");
+
+    let db = firebase.firestore();
+    let docRef = db.collection("npc").doc("npc_"+npcName);
+
+    let setNpc = docRef.set(
+        {
+            name: npcName,
+            intro: npcIntro
+        }
+    );
+
+    setNpc.then(
+        result => SetStatusMessage("Submitted!"),
+        error => SetStatusMessage("Failed to submit to server.")
+    )
 
     //1. Get information from the fields
     //2. Validate information
@@ -12,6 +35,11 @@ function OnSubmitButtonClick()
 
     //Previous test output
     //document.getElementById("OutputText").textContent = "Submitted!";
+}
+
+function SetStatusMessage(text)
+{
+    document.getElementById("OutputText").textContent = text;
 }
 
 function OnClearButtonClick()
