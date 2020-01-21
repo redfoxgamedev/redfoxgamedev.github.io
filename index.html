@@ -24,5 +24,26 @@
  
         <p id="OutputText"></p>
     </body>
-<script src="index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDdD8CKexvLwWHDBBN4Xe6AIr79KY1Zrkg",
+            authDomain: "decadesserver.firebaseapp.com",
+            databaseURL: "https://decadesserver.firebaseio.com",
+            projectId: "decadesserver",
+            storageBucket: "decadesserver.appspot.com",
+            messagingSenderId: "316481537766",
+            appId: "1:316481537766:web:cf307bd8480c5df7131d27",
+            measurementId: "G-R0SPKXLNX8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script type="text/javascript" src="index.js"></script>
 </html>
