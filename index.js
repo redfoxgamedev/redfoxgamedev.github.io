@@ -1,7 +1,7 @@
 function OnSubmitButtonClick()
 {
     GetAllNPCs();
-    
+
 
     //1. Get information from the fields
     //2. Validate information
