@@ -1,14 +1,6 @@
 function OnSubmitButtonClick()
 {
-    http = new XMLHttpRequest();
-    url = "https://jsonplaceholder.typicode.com/posts";
-    http.open("GET", url);
-    http.send();
-
-    http.onreadystatechange = (e) =>
-    {
-        document.getElementById("OutputText").textContent = http.responseText;
-    }
+    GetAllNPCs();
 
     //1. Get information from the fields
     //2. Validate information
@@ -24,4 +16,32 @@ function OnSubmitButtonClick()
 function OnClearButtonClick()
 {
     document.getElementById("OutputText").textContent = "Cleared!";
+}
+
+function GetAllNPCs() {
+    var db = firebase.firestore();
+
+    let dbRequest = db.collection("npc").get();
+    dbRequest.then(
+        result => OutputAllNpc(result)
+    );
+
+}
+
+function OutputAllNpc(data) {
+    data.forEach(doc => {
+        console.log(doc.id, "=>", doc.data());
+    });
+}
+
+function AddNpc(docName, npcName, npcIntro) {
+    var db = firebase.firestore();
+    let docRef = db.collection("npc").doc(docName);
+
+    let setNpc = docRef.set(
+        {
+            name: npcName,
+            intro: npcIntro
+        }
+    );
 }
