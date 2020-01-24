@@ -1,7 +1,7 @@
 function OnSubmitButtonClick()
 {
-    let npcName = document.getElementById("npcName").value;
-    let npcIntro = document.getElementById("npcIntro").value;
+    let npcName = document.getElementById("npcName").value.trim();
+    let npcIntro = document.getElementById("npcIntro").value.trim();
 
     if (npcName.length === 0 || npcIntro.length === 0)
     {
@@ -11,8 +11,9 @@ function OnSubmitButtonClick()
 
     SetStatusMessage("Sending...");
 
+    let docName = "npc_"+npcName.trim().toLowerCase().replace(/ /g, "_");
     let db = firebase.firestore();
-    let docRef = db.collection("npc").doc("npc_"+npcName);
+    let docRef = db.collection("npc").doc(docName);
 
     let setNpc = docRef.set(
         {
